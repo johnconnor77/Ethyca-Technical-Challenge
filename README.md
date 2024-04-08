@@ -21,29 +21,13 @@ Tic Tac Toe is a two-player game where each player takes turns marking spaces in
 
 ## Endpoints
 
-### Create a New Game
+| Method | Endpoint                    | Description                                       |
+|--------|-----------------------------|---------------------------------------------------|
+| POST   | /game/new                   | Create a New Game                                 |
+| POST   | /games/{game_id}/moves      | Make a Move                                       |
+| GET    | /games/{game_id}/moves      | Get Moves of a Game                               |
+| GET    | /games                      | Get All Games                                     |
 
-POST /game/new
-
-Creates a new Tic Tac Toe game and returns the game ID.
-
-### Make a Move
-
-POST /games/{game_id}/moves
-
-Makes a move in the Tic Tac Toe game with the specified game ID. The request body should include the coordinates (x, y) of the move.
-
-### Get Moves of a Game
-
-GET /games/{game_id}/moves
-
-Retrieves all moves made in the Tic Tac Toe game with the specified game ID.
-
-### Get All Games
-
-GET /games
-
-Retrieves information about all Tic Tac Toe games.
 
 ## Example
 
