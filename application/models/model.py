@@ -1,5 +1,5 @@
 import random
-
+from flask_api import status
 from datetime import datetime
 
 class TicTacToe:
@@ -51,12 +51,12 @@ class TicTacToe:
         """
         game = self.find_game_by_id(game_id)
         if game is None:
-            return {'error': 'Game not found'}, 404
+            return {'error': 'Game not found'}, status.HTTP_404_NOT_FOUND
 
         board = game['board']
 
         if board[y][x] != ' ':
-            return {'error': 'Cell already occupied'}, 400
+            return {'error': 'Cell already occupied'}, status.HTTP_400_BAD_REQUEST
 
         board[y][x] = 'X'
 
@@ -68,7 +68,7 @@ class TicTacToe:
 
         game['moves'].append({'player': 'X', 'position': {'x': x, 'y': y}, 'timestamp': datetime.now()})
 
-        return {'board': board}, 200
+        return {'board': board}, status.HTTP_200_OK
 
     def get_moves(self, game_id):
         """
@@ -85,9 +85,8 @@ class TicTacToe:
         """
         game = self.find_game_by_id(game_id)
         if game is None:
-            return {'error': 'Game not found'}, 404
-        return {'moves': game['moves']}, 200
-
+            return {'error': 'Game not found'}, status.HTTP_404_NOT_FOUND
+        return {'moves': game['moves']}, status.HTTP_200_OK
     def get_games(self):
         """
         Get all Tic Tac Toe games.
@@ -96,7 +95,7 @@ class TicTacToe:
           200:
             description: Successful operation
         """
-        return {'games': self.games}, 200
+        return {'games': self.games}, status.HTTP_200_OK
 
     def find_game_by_id(self, game_id):
         return next((g for g in self.games if g['id'] == game_id), None)
