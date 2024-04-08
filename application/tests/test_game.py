@@ -1,6 +1,6 @@
 import unittest
 import json
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 from application.models.model import TicTacToe
 from application import intial_app
 
@@ -26,27 +26,28 @@ class TicTacToeTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 201)
         self.assertIn('game_id', data)
 
-    def side_effect_find_game_by_id(self, game_id):
-        if game_id == 1:
-            # Simulate a game state with the player's move
-            return {'id': 1, 'board': [['X' for _ in range(3)] for _ in range(3)]}
-        else:
-            return None
-
     @patch('application.models.model.TicTacToe')
     def test_make_move(self, mock_tic_tac_toe):
         # Mocking TicTacToe class
-        mocked_instance = mock_tic_tac_toe
+        mocked_instance = mock_tic_tac_toe.return_value
         mocked_instance.create_game.return_value = {'id': 1}
-        mocked_instance.find_game_by_id.side_effect = self.side_effect_find_game_by_id
 
         # Create a game first
         response = self.app.post('/game/new')
         game_id = json.loads(response.data.decode('utf-8'))['game_id']
 
+        # Store the initial return value of find_game_by_id
+        initial_return_value = {'id': 1, 'board': [[' ' for _ in range(3)] for _ in range(3)]}
+        mocked_instance.find_game_by_id.return_value = initial_return_value
+
         # Make a move
         data = {'x': 0, 'y': 0}
         response = self.app.post(f'/game/{game_id}/moves', json=data)
+
+        # Update the mocked game state after making the move
+        updated_return_value = initial_return_value.copy()  # Create a copy to avoid modifying the original
+        updated_return_value['board'][0][0] = 'X'
+        mocked_instance.find_game_by_id.return_value = updated_return_value
 
         # Assertions
         self.assertEqual(response.status_code, 200)
