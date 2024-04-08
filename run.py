@@ -182,6 +182,7 @@ swagger_json = {
     }
 }
 
+
 # Route to serve Swagger JSON
 @app.route('/apidocs/swagger.json')
 def serve_swagger_json():
@@ -189,5 +190,5 @@ def serve_swagger_json():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=8080)
+    app.run()
 
