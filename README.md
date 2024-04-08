@@ -42,7 +42,7 @@ Tic Tac Toe is a two-player game where each player takes turns marking spaces in
 ![moves](https://github.com/johnconnor77/Ethyca-Technical-Challenge/assets/51679898/5dce0dab-d1d1-448f-8b71-0e211a81ecb2)
 
 
-![swaggerdocs](https://github.com/johnconnor77/Ethyca-Technical-Challenge/assets/51679898/a4842792-2b6a-409a-852b-2a46a4d71565)
-
-
 ## API Documentation
+
+
+![swaggerdocs](https://github.com/johnconnor77/Ethyca-Technical-Challenge/assets/51679898/a4842792-2b6a-409a-852b-2a46a4d71565)
