@@ -1,20 +1,54 @@
 import random
+
 from datetime import datetime
 
-
 class TicTacToe:
-
     def __init__(self):
         self.games = []
         self.game_id_counter = 1
 
     def create_game(self):
+        """
+        Create a new Tic Tac Toe game.
+        ---
+        responses:
+          201:
+            description: Created
+            schema:
+              properties:
+                game_id:
+                  type: integer
+        """
         game = {'id': self.game_id_counter, 'board': [[' ' for _ in range(3)] for _ in range(3)], 'moves': []}
         self.games.append(game)
         self.game_id_counter += 1
         return game
 
     def make_move(self, game_id, x, y):
+        """
+        Make a move in the Tic Tac Toe game.
+        ---
+        parameters:
+          - name: game_id
+            in: path
+            type: integer
+            required: true
+          - name: x
+            in: body
+            type: integer
+            required: true
+          - name: y
+            in: body
+            type: integer
+            required: true
+        responses:
+          200:
+            description: Move successful
+          400:
+            description: Bad request
+          404:
+            description: Game not found
+        """
         game = self.find_game_by_id(game_id)
         if game is None:
             return {'error': 'Game not found'}, 404
@@ -37,12 +71,31 @@ class TicTacToe:
         return {'board': board}, 200
 
     def get_moves(self, game_id):
+        """
+        Get moves made in the Tic Tac Toe game.
+        ---
+        parameters:
+          - name: game_id
+            in: path
+            type: integer
+            required: true
+        responses:
+          200:
+            description: Successful operation
+        """
         game = self.find_game_by_id(game_id)
         if game is None:
             return {'error': 'Game not found'}, 404
         return {'moves': game['moves']}, 200
 
     def get_games(self):
+        """
+        Get all Tic Tac Toe games.
+        ---
+        responses:
+          200:
+            description: Successful operation
+        """
         return {'games': self.games}, 200
 
     def find_game_by_id(self, game_id):
