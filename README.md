@@ -1,5 +1,8 @@
 ## How to run this project
 
+### Built With
+
+* [Flask Framework](https://flask.palletsprojects.com/en/3.0.x/)
 
 ### Create your new virtualenv.
 - python -m venv venv 
@@ -33,13 +36,22 @@ Tic Tac Toe is a two-player game where each player takes turns marking spaces in
 
 ## Example
 
+**POST /game/new**
 ![newgame](https://github.com/johnconnor77/Ethyca-Technical-Challenge/assets/51679898/4f2bc197-e58e-443f-a3ce-cd9f64eaa665)
 
+**POST /game/{game_id}/moves**
 ![movegame](https://github.com/johnconnor77/Ethyca-Technical-Challenge/assets/51679898/5e349359-bbdc-442b-8f18-9850d6ab9b7d)
 
+**GET /game/{game_id}/moves**
+![moves](https://github.com/johnconnor77/Ethyca-Technical-Challenge/assets/51679898/5dce0dab-d1d1-448f-8b71-0e211a81ecb2)
+
+**GET /game/all** 
 ![gamesall](https://github.com/johnconnor77/Ethyca-Technical-Challenge/assets/51679898/fcdab2ef-db7b-404f-8823-aec505f378dd)
 
-![moves](https://github.com/johnconnor77/Ethyca-Technical-Challenge/assets/51679898/5dce0dab-d1d1-448f-8b71-0e211a81ecb2)
+
+
+## Contact
+* **Juan F. Calle**  - [johnconnor77](https://github.com/johnconnor77)
 
 
 ## API Documentation
