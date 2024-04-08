@@ -2,6 +2,7 @@ import random
 from flask_api import status
 from datetime import datetime
 
+
 class TicTacToe:
     def __init__(self):
         self.games = []
@@ -87,6 +88,7 @@ class TicTacToe:
         if game is None:
             return {'error': 'Game not found'}, status.HTTP_404_NOT_FOUND
         return {'moves': game['moves']}, status.HTTP_200_OK
+
     def get_games(self):
         """
         Get all Tic Tac Toe games.
