@@ -21,13 +21,13 @@ Tic Tac Toe is a two-player game where each player takes turns marking spaces in
 
 ## Endpoints
 
-| Method | Endpoint                    | Description                                       |
-|--------|-----------------------------|---------------------------------------------------|
-| POST   | /game/new                   | Create a New Game                                 |
-| POST   | /games/{game_id}/moves      | Make a Move                                       |
-| GET    | /games/{game_id}/moves      | Get Moves of a Game                               |
-| GET    | /games                      | Get All Games                                     |
-| GET    | /api/docs                   | Swagger Documentation Endpoint                    |
+| Method | Endpoint              | Description                                       |
+|--------|-----------------------|---------------------------------------------------|
+| POST   | /game/new             | Create a New Game                                 |
+| POST   | /game/{game_id}/moves | Make a Move                                       |
+| GET    | /game/{game_id}/moves | Get Moves of a Game                               |
+| GET    | /game/all             | Get All Games                                     |
+| GET    | /api/docs             | Swagger Documentation Endpoint                    |
 
 
 
