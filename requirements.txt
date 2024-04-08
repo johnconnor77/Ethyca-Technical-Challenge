@@ -44,5 +44,5 @@ SQLAlchemy==1.4.31
 status==0.2.5
 tomli==2.0.1
 urllib3==2.2.1
-Werkzeug==2.2.2
+Werkzeug==2.0.3
 zipp==3.18.1
