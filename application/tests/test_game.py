@@ -67,6 +67,20 @@ class TicTacToeTestCase(unittest.TestCase):
         data = json.loads(response.data.decode('utf-8'))
         self.assertIn('moves', data)
 
+    @patch('application.models.model.TicTacToe.get_games')  # Assuming get_all_games is the method to retrieve all games
+    def test_get_games(self, mock_get_all_games):
+        # Mock the return value of get_all_games
+        mock_get_all_games.return_value = ({'games': [{'id': 1, 'board': [[' ' for _ in range(3)] for _ in range(3)]}]}, 200)
+
+        # Request to get all games
+        response = self.app.get('/game/all')
+
+        # Assertions
+        self.assertEqual(response.status_code, 200)
+        data = json.loads(response.data.decode('utf-8'))
+        self.assertIn('games', data)
+        self.assertEqual(len(data['games']), 1)
+
 
 if __name__ == '__main__':
     unittest.main()
