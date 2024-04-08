@@ -27,6 +27,8 @@ Tic Tac Toe is a two-player game where each player takes turns marking spaces in
 | POST   | /games/{game_id}/moves      | Make a Move                                       |
 | GET    | /games/{game_id}/moves      | Get Moves of a Game                               |
 | GET    | /games                      | Get All Games                                     |
+| GET    | /api/docs                   | Swagger Documentation Endpoint                    |
+
 
 
 ## Example
